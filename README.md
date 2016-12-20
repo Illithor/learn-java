@@ -16,3 +16,11 @@ i.e. it's not true that every class should have a main method - **but at least o
   boolean isNot = true;
   while (isNot) { };
   ~~~~
+  
+  
+## Chapter 2 - class and object
+1. Superclass <-> Subclass
+2. The subclasses inherit the methods of the superclass i.e. if the a class has the functionality, then its subclasses automatically get that same functionality.    
+   But it can be a little different: subclasses can override what is written in the superclass.
+3. Things an object knows about itself are called instance variables.    
+   Things an object can do are called methods.
