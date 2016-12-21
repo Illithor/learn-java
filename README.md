@@ -24,3 +24,8 @@ i.e. it's not true that every class should have a main method - **but at least o
    But it can be a little different: subclasses can override what is written in the superclass.
 3. Things an object knows about itself are called instance variables.    
    Things an object can do are called methods.
+4. Object = instance variables + methods    
+   But instance variables and methods are designed as part of class.
+5. A class is not an object. One class. Many objects.
+6. To create an object, we need two classes - one *real* class and one *tester* class.
+7. We put the main method under the *tester* class and in that main class we create and access objects in the new class type.
