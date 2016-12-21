@@ -1,4 +1,7 @@
 # learn-java
+## How to use Eclipse
+### Always remember to right click on the project to add a new class, or you can't launch it.
+
 ## Chapter 1
 1. source file -> class -> method -> statement.
 2. Every Java application has to have at least one class and at least one main method.
@@ -29,3 +32,4 @@ i.e. it's not true that every class should have a main method - **but at least o
 5. A class is not an object. One class. Many objects.
 6. To create an object, we need two classes - one *real* class and one *tester* class.
 7. We put the main method under the *tester* class and in that main class we create and access objects in the new class type.
+8. A real Java application =  object talking to object.
