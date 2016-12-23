@@ -33,3 +33,18 @@ i.e. it's not true that every class should have a main method - **but at least o
 6. To create an object, we need two classes - one *real* class and one *tester* class.
 7. We put the main method under the *tester* class and in that main class we create and access objects in the new class type.
 8. A real Java application =  object talking to object.
+
+## Chapter 3 - primitives and references
+1. Variables come in two flavors: primitive and reference.
+2. Java cares about type. VARIABLES MUST HAVE A TYPE AND A NAME.
+3. Java thinks all number with a floating point is a double unless you put a “f” at the last digit of a number.
+4. You mustn’t put a big thing into a small thing. But putting a small thing into a big thing is fine.
+5. A name must start with a letter, underscore (_), or dollar sign ($). You can't start a name with a number.
+6. Eight primitive types: Boolean Char Byte Short Int Long Float Double.
+7. All references for a given JVM will be the same size regardless of the objects they reference.
+8. Every element in an array is a variable.
+9. An array is an object, even it is an array of primitives.
+10. In an array of type int (int[]) . each element can hold an int. (Because int is a primitive)   
+    In a Dog array (Dog[]), each element can hold... a Dog? No, remember that **a reference variable just holds a reference (a remote control), not the object itself**. So in a Dog array, each element can hold a remote control to a Dog.
+11. Arrays are always objects.
+12. Once declared an array, you can't put anything in it except things that are of the declared array type.
