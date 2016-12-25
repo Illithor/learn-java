@@ -6,8 +6,8 @@
 1. source file -> class -> method -> statement.
 2. Every Java application has to have at least one class and at least one main method.
 3. The main() method is where your program starts running.    
-No matter how big your program is, there's got to be a main() method to get the ball rolling.   
-i.e. it's not true that every class should have a main method - **but at least one main method in the whole file**.
+   No matter how big your program is, there's got to be a main() method to get the ball rolling.   
+   i.e. it's not true that every class should have a main method - **but at least one main method in the whole file**.
 4. Assignment operator "=" and equal operator "==" are different. Make sure you pick the right one.    
 5. The only varIable you can directly test (without using a comparison operator) is a boolean. 
   ~~~~
@@ -48,3 +48,38 @@ i.e. it's not true that every class should have a main method - **but at least o
     In a Dog array (Dog[]), each element can hold... a Dog? No, remember that **a reference variable just holds a reference (a remote control), not the object itself**. So in a Dog array, each element can hold a remote control to a Dog.
 11. Arrays are always objects.
 12. Once declared an array, you can't put anything in it except things that are of the declared array type.
+
+## Chapter 4 – methods use instance variables
+1. A class is the blueprint for an object. It defines what the object(s) know(s) and do(es).
+2. `dog.bark(3); =  dog.bark(); dog.bark(); dog.bark();`
+3. A `void` return type does not give anything back.
+4. When the value of x is passed to z and we change z’s value, the value of x doesn’t change. What passed to z is only a **copy** of x’s value.
+5. You can return a *byte* where an *int* is expected. However, you can’t return a big stuff into what expects a small stuff.
+6. A method **must** declare a return type.    
+   But you can make a method returns a non-void result without using it. By doing that, you are calling the method for what it does inside. It is legal. Java doesn’t force you to use the returned value.
+7. Java cares about type, both when taking a value and returning a value.
+8. You shouldn’t let your instance variables exposed. So you must build a setter to stop accessing the data directly. So you should encapsulate!
+9. Encapsulation rule of thumb: mark the instance variables *private* and provide *public* getters and setters.
+10. `int x = 3 + one.getSize();` is available if one.getSize() returns an int.
+11. Instance variables always have a default value.    
+    Int: 0    Float: 0.0    Booleans: false    References: null (not an object,is a reference)
+12. Instance and local variables:    
+    Instance variables are declared inside a class but not within a method.    
+    Local variables are declared within a method.
+13. `LOCAL VARIABLES DO NOT HAVE A DEFAULT VALUE!` You can’t use a local variable before initialize it.
+14. Use “==” to see if two **primitives** or **reference variables** are same.    
+    For primitives: the == operator can be used to compare two variables of any kind, and it simply compares the bits. (i.e. int a = 3; byte b = 3; a == b is true.)    
+    For reference variables: the == operator returns true if two reference variables refer to the same object.
+    Use `.equal()` to see if two objects are same.
+
+## Chapter 5 - writing a program
+1. Prep Code – Test Code – Real Code.    
+   Prep Code: a form of pseudocode to help you focus on the logic without stressing about syntax.    
+   Test Code: a class or methods that will test the real code and validate that it's doing the right thing.    
+   Real Code: the actual implementation of the class.
+2. Figure out what the class is supposed to do:
+   * List the Instance variables and methods.
+   * Write prep code for the methods.
+   * Implement the class.
+   * Test the methods.
+   * Debug and reimplement as needed.
