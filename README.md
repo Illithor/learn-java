@@ -89,3 +89,16 @@
 
 ## Chapter 6 - get to know the Java API
 1. ArrayList is an **object**.
+2. 
+   * && <- this means “and”
+   * || <- this means “or”
+   * ! <- this means “not equal”
+   * & and | <- these are also “and” and “or”, but they force the JVM to check both sides even already short circuited.
+3. You have to know the full name of the class you want to use in your code.    
+  Full name = package name + class name
+4. There are two ways to use a class:
+  * Import the full name at the top of the source code.
+  * Type the full name every time you use it.  (Which is really inconvenient!)
+    (Unless the class is in java.lang)
+5. ArrayList is a class in the Java API. ArrayList is really `java.util.ArrayList`.
+6. `import` the class of package at the top of the source code, or you have to type it.
