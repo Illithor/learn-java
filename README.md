@@ -83,3 +83,9 @@
    * Implement the class.
    * Test the methods.
    * Debug and reimplement as needed.
+3. Use while loop when you don’t know how many times you ‘re going to loop.    
+   Use for loop when you know exactly the time you’re going to loop.    
+4. Note the difference between `++x` and `x++`.
+
+## Chapter 6 - get to know the Java API
+1. ArrayList is an **object**.
