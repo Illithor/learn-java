@@ -111,23 +111,25 @@
 4. An example:
    ~~~~
    public class Doctor {
-   boolean worksAtHospital;
-   void treatPatient() {
-   // perform a checkup
-   }
+     boolean worksAtHospital;
+     void treatPatient() {
+       // perform a checkup
+     }
    
-   public class FamilyOoctor extends Doctor {
-   boolean makesHouseCalls;
-   void giveAdvice(){
-   // give homespun advice
-   }
+     public class FamilyOoctor extends Doctor {
+       boolean makesHouseCalls;
+       void giveAdvice(){
+          // give homespun advice
+       }
    
-   public class Surgeon extends Doctor{
-   void treatPatient () {
-   // perform surgery
-   }
-   void makeIncision() {
-   // make incision
+     public class Surgeon extends Doctor{
+       void treatPatient () {
+         // perform surgery
+       }
+       void makeIncision() {
+        // make incision
+       }
+     }
    }
    ~~~~
    Family doctor: Adds one new instance variable and adds one new method.    
@@ -148,3 +150,43 @@
 12. Why inheritance?    
     That way, when you need to modify it, you have only one place to update, and the change is automatically reflected in all the classes that inherit that behavior.
 13. When you define a supertype for a group of classes, any subclass of that supertype can be substituted where the supertype is expected.
+14. Normal: Dog myDog = new Dog(); (both have the type “Dog”)    
+    Polymorphism: Animal myDog = new Dog();  (they are of different type)    
+    With polymorphism, the reference type can be a superclass of the actual object type.
+15. An example:
+    ~~~~
+    Animal[] animals = new Animal[5];
+    Animals [0] = new Dog();
+    Animals [1] = new Cat();
+    Animals [2] = new Wolf();
+    Animals [3] = new Hippo();
+    Animals [4] = new Lion();
+    
+    for (int i = 0; i<animals.length; i++) {
+    animals[i].eat();		// when i = 0, it call the eat() in Dog
+    animals[i].roam();	   // when i = 1, it calls the roam() in Cat
+    }
+    ~~~~
+16. You can also have polymorphic arguments and return types!
+17. Most subclass levels are no deeper than one or two levels.
+18. Three ways to stop a class from being subclassed:
+    * Make it non-public. (don’t declare it as `public`)
+    * Mark it as `final`. (no one can extend a final class)
+    * A class has only private constructors.
+19. To protect a specific method from being overridden, mark the method with `final`.    
+    To guarantee that none of the methods in that class will ever be overridden, mark the whole class as `final`.
+20. `TO OVERRIDE, YOU MUST FOLLOW THE CONTRACT!` (A contract is like “take a String and return a Boolean.”)    
+    The overriding method must have the exactly same contract.
+21. Rules of overriding:    
+    * Arguments and return types must be the same.
+    * The method can’t be less accessible.
+    
+    For example:
+    In a superclass we have `public boolean turnOn();`.    
+    If you write `public boolean turnOn(int level);` in the subclass, you’re not overriding - you’re overLOADing, because you change the argument.    
+    If you write `private boolean turnOn();` in the subclass, you’re not overriding nor overloading, because you do not change the argument, but also restrict the access level.
+22. Method overloading is nothing more than having two methods with the same name but different argument lists. It has nothing to do with inheritance and polymorphism.
+23. Rules for overloading:
+    * The return types can be different.
+    * You can't change ONLY the return type.
+    * You can vary the access levels in any direction.
