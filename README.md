@@ -102,3 +102,49 @@
     (Unless the class is in java.lang)
 5. ArrayList is a class in the Java API. ArrayList is really `java.util.ArrayList`.
 6. `import` the class of package at the top of the source code, or you have to type it.
+
+## Chapter 7 - inheritance and polymorphism
+1. The subclass inherits from the superclass.
+2. The subclass inherits the members of the superclass. (members = instance variables + methods)
+3. **Instance variables cannot be overridden.** They don't define any special behavior, so a subclass can give an inherited instance variable any value it chooses.    
+(e.g. Superclass has a String color = “white”; two subclasses can have “yellow” and “red” as they like.)
+4. An example:
+   ~~~~
+   public class Doctor {
+   boolean worksAtHospital;
+   void treatPatient() {
+   // perform a checkup
+   }
+   
+   public class FamilyOoctor extends Doctor {
+   boolean makesHouseCalls;
+   void giveAdvice(){
+   // give homespun advice
+   }
+   
+   public class Surgeon extends Doctor{
+   void treatPatient () {
+   // perform surgery
+   }
+   void makeIncision() {
+   // make incision
+   }
+   ~~~~
+   Family doctor: Adds one new instance variable and adds one new method.    
+   Surgeon: Overrides the inherited treatPatient() method and adds one new method.
+5. When you are calling a method, you are calling the most specific one.(e.g. Canine overrides Animal, Wolf overrides Canine)    
+   The JVM looks inside the Wolf class first. If it is not overridden in Wolf, it looks inside Canine, then Animal.
+6. Don’t worry that the JVM doesn't ever find a match. It will always find one.
+7. IS-A = extend    
+   (Wolf IS-A Canine, so Wolf is a *subclass* of Canine, or Wolf *extends* Canine)    
+   HAS-A = has an instance variable    
+   (Bathroom HAS-A Tub, so Bathroom has a *instance variable* Tub, or Bathroom has a *reference* to Tub)
+8. The keyword `super` allows you to use the method in superclass while overriding it at the same time.
+9. Most restrictive to least: private -> default -> protected -> public.
+10. Public members are inherited. Private members are not inherited.
+11. If you want it be more specific, put it into the subclass.    
+    If many subclasses have a method in common, put it into the superclass.    
+    If the superclass and the subclass violate the two rules above, do not make an inheritance only to reuse the code from each other.
+12. Why inheritance?    
+    That way, when you need to modify it, you have only one place to update, and the change is automatically reflected in all the classes that inherit that behavior.
+13. When you define a supertype for a group of classes, any subclass of that supertype can be substituted where the supertype is expected.
