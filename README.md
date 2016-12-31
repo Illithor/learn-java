@@ -10,7 +10,7 @@
    i.e. it's not true that every class should have a main method - **but at least one main method in the whole file**.
 4. Assignment operator "=" and equal operator "==" are different. Make sure you pick the right one.    
 5. The only varIable you can directly test (without using a comparison operator) is a boolean. 
-  ~~~~
+  ```java
   // this piece of code is not correct
   int x = 1;
   while (x) { };
@@ -18,7 +18,7 @@
   // but this one is correct
   boolean isNot = true;
   while (isNot) { };
-  ~~~~
+  ```
   
   
 ## Chapter 2 - class and object
@@ -109,7 +109,7 @@
 3. **Instance variables cannot be overridden.** They don't define any special behavior, so a subclass can give an inherited instance variable any value it chooses.    
 (e.g. Superclass has a String color = “white”; two subclasses can have “yellow” and “red” as they like.)
 4. An example:
-   ~~~~
+   ```java
    public class Doctor {
      boolean worksAtHospital;
      void treatPatient() {
@@ -131,7 +131,7 @@
        }
      }
    }
-   ~~~~
+   ```
    Family doctor: Adds one new instance variable and adds one new method.    
    Surgeon: Overrides the inherited treatPatient() method and adds one new method.
 5. When you are calling a method, you are calling the most specific one.(e.g. Canine overrides Animal, Wolf overrides Canine)    
@@ -154,7 +154,7 @@
     Polymorphism: Animal myDog = new Dog();  (they are of different type)    
     With polymorphism, the reference type can be a superclass of the actual object type.
 15. An example:
-    ~~~~
+    ```java
     Animal[] animals = new Animal[5];
     Animals [0] = new Dog();
     Animals [1] = new Cat();
@@ -166,7 +166,7 @@
     animals[i].eat();		// when i = 0, it call the eat() in Dog
     animals[i].roam();	   // when i = 1, it calls the roam() in Cat
     }
-    ~~~~
+    ```
 16. You can also have polymorphic arguments and return types!
 17. Most subclass levels are no deeper than one or two levels.
 18. Three ways to stop a class from being subclassed:
@@ -214,8 +214,7 @@
 16. The Object class serves two main purposes:    
  * to act as a polymorphic type for methods that need to work on any class.
  * provide real method code that all objects in Java need at runtime.    
-17. An example:
-    `Object o = new Ferrari();`    
+17. `Object o = new Ferrari();`    
     `o.goFast(); // that is illegal!`
    You can only call a method on an object reference if the class of the reference type really has the method.
 18. Put any kind of object into ArrayList<Object>, then no matter what the object is (fish, guitar, soccerball etc.), it comes out as an Object type.    
@@ -223,16 +222,15 @@
 19. The Bad and the Good:    
  ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19.png)    
  ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19g.png)
-
 20. The compiler decides whether you can call a method based on the reference type, not actual object type.
 21. Even if the *object* is of type Snowboard, an Object *reference* to the Snowboard object can’t see the Snowboard-specific methods.    
 ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-21.png)
 22. If you are sure an object is a Dog, you can force it to become a Dog again:
-    ~~~~
-    Object o =al.get(index);
-    Dog d = (Dog) o; // use a cast here!
-    d.bark();
-    ~~~~
+```java
+Object o =al.get(index);
+Dog d = (Dog) o; // use a cast here!
+d.bark();
+```
 23. The compiler checks the class of the *reference* type, not the class of the actual *object* type.
 24. Interface methods are public and abstract.
 Again, abstract methods have no body! They end up with a semicolon.    
