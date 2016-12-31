@@ -188,5 +188,59 @@
 22. Method overloading is nothing more than having two methods with the same name but different argument lists. It has nothing to do with inheritance and polymorphism.
 23. Rules for overloading:
     * The return types can be different.
-    * You can't change ONLY the return type.
+    * You cannot change ONLY the return type.
     * You can vary the access levels in any direction.
+
+## Chapter 8 - interfaces and abstract classes
+1. Abstract class = class that can’t be instantiated.
+2. To prevent a class from being instantiated: stop saying “new” on that class.    
+ By marking the class `abstract`, the compiler will stop the code from creating any instance from that type.
+3. An example:    
+ If you make the class Canine abstract, then    
+ `Canine c; c = new Dog();` is fine.    
+ But `c = new Canine();` is forbidden.
+4. An abstract class has virtually no use, no value, no purpose, unless it is extended.
+5. Abstract class != concrete class.
+6. Besides classes, you can also mark methods abstract, too.
+7. An abstract class means the class must be extended. An abstract method means the method must be overridden.
+8. An abstract method has no body! (No curly braces)
+9. If you declare an abstract method, you MUST mark the class abstract as well. You can’t have an abstract method in a non-abstract class. But you can mix both abstract and non-abstract methods in an abstract class.
+10. The point of an abstract method is that even though you haven’t put in any actual method code, you’ve still defined part of the protocol for a group of subtypes (subclasses).
+11. You MUST implement all the abstract methods.
+12. The first **concrete** class in the inheritance tree must implement all abstract methods. An abstract class Canine under another abstract class Animal doesn’t need to implement the abstract method in Animal. However, a concrete class Dog under Canine must implement all abstract methods. But Canine **can** implement the abstract methods so that Dog does not need to implement them. 
+13. `Object` is the ultimate superclass - every Java class extends class `Object`.
+14. Any class that doesn’t explicitly extend another class, implicitly extends `Object`.
+15. Object is a non-abstract class.
+16. The Object class serves two main purposes:    
+ * to act as a polymorphic type for methods that need to work on any class.
+ * provide real method code that all objects in Java need at runtime.    
+17. An example:
+    `Object o = new Ferrari();`    
+    `o.goFast(); // that is illegal!`
+   You can only call a method on an object reference if the class of the reference type really has the method.
+18. Put any kind of object into ArrayList<Object>, then no matter what the object is (fish, guitar, soccerball etc.), it comes out as an Object type.    
+ ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-18.png)
+19. The Bad and the Good:    
+ ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19.png)    
+ ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19g.png)
+
+20. The compiler decides whether you can call a method based on the reference type, not actual object type.
+21. Even if the *object* is of type Snowboard, an Object *reference* to the Snowboard object can’t see the Snowboard-specific methods.    
+![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-21.png)
+22. If you are sure an object is a Dog, you can force it to become a Dog again:
+    ~~~~
+    Object o =al.get(index);
+    Dog d = (Dog) o; // use a cast here!
+    d.bark();
+    ~~~~
+23. The compiler checks the class of the *reference* type, not the class of the actual *object* type.
+24. Interface methods are public and abstract.
+Again, abstract methods have no body! They end up with a semicolon.    
+![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-24.png)
+25. One class can only have one extend, but many implements.    
+ i.e. A Java class can only have one superclass, but can have many interfaces that defines the roles the class can play.
+26. How to know whether to make a class, a subclass, an abstract class, or an interface?
+ * If the new class does not pass the IS-A test for any other class, make it as a new class that doesn’t extend anything (other than Object).
+ * If the new class is a more specific version of a current class, make it as a subclass of that class.
+ * If you want to define a template, use an abstract class.
+ * If you want to define a role that other classes can play, make it as an interface.
