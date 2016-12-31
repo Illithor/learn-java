@@ -215,7 +215,7 @@
  * to act as a polymorphic type for methods that need to work on any class.
  * provide real method code that all objects in Java need at runtime.    
 17. `Object o = new Ferrari();`    
-    `o.goFast(); // that is illegal!`
+    `o.goFast(); // that is illegal!`    
    You can only call a method on an object reference if the class of the reference type really has the method.
 18. Put any kind of object into ArrayList<Object>, then no matter what the object is (fish, guitar, soccerball etc.), it comes out as an Object type.    
  ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-18.png)
@@ -226,11 +226,12 @@
 21. Even if the *object* is of type Snowboard, an Object *reference* to the Snowboard object can’t see the Snowboard-specific methods.    
 ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-21.png)
 22. If you are sure an object is a Dog, you can force it to become a Dog again:
-```java
-Object o =al.get(index);
-Dog d = (Dog) o; // use a cast here!
-d.bark();
-```
+ ```
+ Object o =al.get(index);
+ Dog d = (Dog) o; // use a cast here!
+ d.bark();
+ ```
+
 23. The compiler checks the class of the *reference* type, not the class of the actual *object* type.
 24. Interface methods are public and abstract.
 Again, abstract methods have no body! They end up with a semicolon.    
