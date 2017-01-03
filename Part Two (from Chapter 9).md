@@ -1,3 +1,4 @@
+## Chapter 9 - constructors and garbage collection
 1. Objects live on the heap (also known as garbage-collectible heap), while method invocations and local variables live on the stack.
  Instance variables live within the object is on the heap. If the instance variable is a reference to an object, both the instance variable and the object are on the heap.
 2. Instance variables are declared inside a *class* but not Inside a method.    
@@ -65,3 +66,73 @@
  You can use a variable only when it is in scope.
 28. An object is alive as long as there are live references to it. In contrast, an object becomes
 eligible for GC when its last live reference disappears.
+
+## Chapter 10 - numbers and statics
+1. ` max()` `min()` `round()` `abs()`, these methods never use instance variable values.
+2. You can NEVER say new to a Math class to create a new Math object.
+3. The keyword **static** lets a method run without any instance of the class.
+4. Often (although not always), a class with static methods is not meant to be instantiated.
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/10-04.png)
+
+5. And again, it's impossible to instantiate an abstract class.
+6. But you can restrict other code from instantiating a non-abstract class by marking the constructor private. (a method marked private means that only code from within the class can invoke the method)
+7. A static method:    
+ * cannot refer to any **instance variables** of the class. (as it does not know any of the objects or instance variables on the heap.)
+ * cannot use **non-static methods** either. (since the non-static method may use instance variables, which go back to the same old question - whose variable? The static method doesn’t know the objects. Even the non-static method uses no instance variables, the code still won’t compile, because there may be an override method that consumes instance variables later.)    
+ STATIC METHOD = DO NOT NEED INSTANCE (YOU CAN USE CLASS TO CALL IT DIRECTLY)
+ See this link for more details: http://www.cnblogs.com/shenliang123/archive/2011/10/27/2226923.html
+8. Static variables are **shared**.    
+ For example, as for duck-counting, each duck **object** has its own size/color/age variable, but there’s only one copy of the duckCount variable - the one shared in the **class**.
+9. All instances of the same class share a single copy of the static variables.
+10. Instance variables: 1 per **instance**    
+ Static variables: 1 per **class**
+11. Static variables are initialized when a class is loaded.
+12. Static variables in a class are initialized before any object of that class can be created.    
+ Static variables in a class are initialized before any static method of the class runs. 
+13. Static final variables are constants and constant variable names should be in all caps!
+14. To initialize a **final** static variable, you should do it:
+ * At the time you declare it
+ * In a static initializer
+ If you do not initialize the final static variable, the compiler will catch it!
+15. Final = cannot change
+16. A static method **can't** access a non-static variable, but a non-static method **can** access a static variable.
+17. To make a constant in Java, mark a variable as both static and final.
+18. Wrapper class names are different from primitives! (pay attention to `Integer` and `Character`.)
+19. Wrap and unwrap (before Java 5.0):
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/10-19.png)
+
+20. Before Java 5.0, you could not specify the type of `ArrayList`. It is only a list of objects.
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/10-20.png)    
+After Java 5.0:
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/10-20a.png)
+
+21. Inside the parentheses of ArrayList<>, you can only write class or interface types, not primitives. For example, `ArrayList<Integer>` is right, but `ArrayList<int>` is wrong.
+22. If a method takes:
+ * a wrapper type - you can pass a reference to a wrapper or a primitive of the matching type.
+ * a primitive - you can pass in either a compatible primitive or a reference to a wrapper of that primitive type.
+ If a method declares:
+ * a primitive return type - you can return either a compatible primitive or a reference to the wrapper of that primitive type. 
+ * a wrapper return type - you can return either a reference to the wrapper type or a primitive of the matching type.
+23. Formatting consumes two parts:
+ * formatting instructions
+ * arguments to be formatted
+24. A format specifier can have up to five different parts:    
+ `%[argument number] [flags] [width] [.precision]type`, in which `type` is the only **required** specifier.
+25. `%d = decimal`    
+ `%f = float`    
+ `%x = hexadecimal`    
+ `%c = character`    
+ `%tc = complete date and time`    
+ `%tr = just time`    
+ `%tA, %tB %td = day in week, month day`
+ ```java
+Date today = new Date();
+String.format(“%tA, %tB %td”, today, today, today);
+=> Sunday, November 28
+
+Date today = new Date();
+String.format(“%tA, %<tB %<td”, today);
+=> Sunday, November 28
+ ```
+26. Use the Java API java.util.GregorianCalendar to deal with time problems.
+27. Again, **static methods are called on the class, rather than on a particular instance.**
