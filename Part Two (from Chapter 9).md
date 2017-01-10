@@ -136,3 +136,24 @@ String.format(“%tA, %<tB %<td”, today);
  ```
 26. Use the Java API java.util.GregorianCalendar to deal with time problems.
 27. Again, **static methods are called on the class, rather than on a particular instance.**
+28. If you're only going to use astatic member a few times, you should avoid static Imports, to help keep the code more readable.    
+ But if you're going to use astatic member a lot, (like doing lots of Math calculations), then it's probably OK to use the static Import.
+ ```java
+ // without static import
+ import java.lang.Math;
+ class NoStatic {
+   public static void main (string[] args) {
+     System.out.println("sqrt" + Math.sqrt(2.0);
+     System.out.println("tan" + Math.tan(60));
+   }
+   
+ // with static import
+  import static java.lang.System.out;
+  import static java.lang.Math.*;
+  class NoStatic {
+    public static void main (string[] args) {
+      out.println("sqrt" + sqrt(2.0);
+      out.println("tan" + tan(60));
+    }
+  }
+```
