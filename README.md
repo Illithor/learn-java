@@ -60,6 +60,7 @@
 7. Java cares about type, both when taking a value and returning a value.
 8. You shouldn’t let your instance variables exposed. So you must build a setter to stop accessing the data directly. So you should encapsulate!
 9. Encapsulation rule of thumb: mark the instance variables *private* and provide *public* getters and setters.
+ ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/04-09.png)
 10. `int x = 3 + one.getSize();` is available if one.getSize() returns an int.
 11. Instance variables always have a default value.    
     Int: 0    Float: 0.0    Booleans: false    References: null (not an object,is a reference)
