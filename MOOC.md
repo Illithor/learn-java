@@ -1,11 +1,11 @@
-## Intro
+## Week 1 
 1. Classes and interfaces can be grouped into packages.    
  (e.g. Java.lang package contains fundamental classes. Java.util contains a collections of reusable ADTs.)
 2. Make classes and interfaces into packages makes it easier to avoid collisions between classes and interfaces that have the same common name.    
  (Remember full name = package name + class name.)
 3. Generics?
 
-## Module 1
+## Module 1 - Intro
 1. Key object-oriented programming concepts: abstraction, inheritance, and polymorphism.
 2. Examples of data abstraction features supported by Java: classes, interfaces.
 3. `ADT` defines a set of data values and a set of operations on these values.
@@ -36,3 +36,19 @@
 4. Logging:
  Android has six logging levels: `Assert`, `Error`, `Warning`, `Info`, `Debug` and `Verbose`.    
  While filter the levels, you can only see the level that matches or the levels above the current level.
+
+## Module 3
+- `CPU` (central processing unit), the main component of a computer system.
+ - `ALU` (arithmatic logic unit), which does all the mathematical and logic computations. 
+ - control unit, directs what happens.
+- Memory
+ - `RAM` (random access memory)
+ - `ROM` (read only memory)
+ - high speed cache
+- Input devices, that allow users to put information into the computer.
+- Output devices, that allow the computer to provide information back to the user.
+
+1. `RAM` stores the running program.
+2. A `bit` is a binary digit that stores either 0 or 1.    
+ A `byte` = 8 `bit`s, every `byte` has a unique address.
+3. Java is a bit different from ither languages: its compiler does not produce object code that only runs on a particular computer. Instead, the Java compiler produces what is known as a byte-code, which is object code for a hypothetical computer, or what we call a virtual machine. This byte-code is a low level code that can run on **any computer** that has a piece of software known as the Java Virtual Machine (`JVM`). 
