@@ -52,3 +52,22 @@
 2. A `bit` is a binary digit that stores either 0 or 1.    
  A `byte` = 8 `bit`s, every `byte` has a unique address.
 3. Java is a bit different from ither languages: its compiler does not produce object code that only runs on a particular computer. Instead, the Java compiler produces what is known as a byte-code, which is object code for a hypothetical computer, or what we call a virtual machine. This byte-code is a low level code that can run on **any computer** that has a piece of software known as the Java Virtual Machine (`JVM`). 
+4. A value of any type can be assigned to the type to the right:    
+ `byte -> short -> int -> long -> float -> double`
+5. If `distance` is `9.7`, then `(int)distance` is `9`, but the value of `distance` does not change - a new value was created to represent the rounded value of distance.
+6. %8d = an integer, 8 characters wide, right-aligned    
+ %-8d = an integer, 8 characters wide, left-aligned    
+ %.4f = a real number, 4 characters after decimal    
+ %6.2f = a real number, 6 characters wide, 2 after decimal (rounded)    
+ Note that width specifications set a minimum width (it can overflow)
+7. Adding a char and an int, returns an int: `'a' + 7 // 104`.    
+ To convert back to a char, use a cast: `(char)('a' + 7) // 'h'`
+8. Differences between string and char: string is an object so we can call method to it, but char is not an object and we cannot call method to it.
+9. Declaring a static method:    
+ public static return_type name(parameters) {    
+ statement1;    
+ statement2;    
+ }
+10. In the Android, if you have a method that needs to access the out object for printing to the screen, you will need to remove the `static` keyword from the method header for the method to work correctly. If your helper methods simply take in parameters and return values and do not print anything to the out object, then they can remain as static methods. 
+11.    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M3L6P1.png)
