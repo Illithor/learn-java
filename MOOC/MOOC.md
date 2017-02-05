@@ -71,3 +71,44 @@
 10. In the Android, if you have a method that needs to access the out object for printing to the screen, you will need to remove the `static` keyword from the method header for the method to work correctly. If your helper methods simply take in parameters and return values and do not print anything to the out object, then they can remain as static methods. 
 11.    
  ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M3L6P1.png)
+
+## Week 2
+## Module 4 - Control flows
+Intro to if/for/while loop.
+Just check the syntaxs online...
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/M4L2.png)
+
+## Module 5 - Arrays
+1. Arrays can store a large amount of variables as long as they are of the same type.
+2. **ZERO base**.
+3. Syntax: `type[] array_name = new type[length];`    
+ For example, `int[] score = new int[5];`
+4. Default values:    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L2P1.png)
+5. It's easy to process the array with a for-loop.
+6. Some examples:
+```java
+//Returns a new array that has been mirrored.
+//Example: [3, 8, 10, 4]=>[3, 8, 10, 4, 4, 10, 8, 3]
+public static int[] mirror(int[] orig) {
+ int[] tmp = new int[2*orig.length];
+ for (int i=0; i<orig.length; i++) {
+ tmp[i] = orig[i];
+ tmp[tmp.length-i-1] = orig[i];
+ }
+ return tmp;
+}
+```
+
+```java
+public static double median(int[] numbers) {
+ int[] tmp = Arrays.copyOf(numbers, numbers.length); // That is, copy the array named "numbers" and all the values of it.
+ Arrays.sort(tmp);
+ int mid = tmp.length/2; // Note: int division
+ if (tmp.length%2 == 0) { // even length?
+ return (tmp[mid-1]+tmp[mid])/2.0; // Note that we use 2.0!!! Float division!!!
+ } else {
+ return tmp[mid];
+ }
+}
+```
