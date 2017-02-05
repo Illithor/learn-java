@@ -173,3 +173,80 @@ while (itr.hasNext()) {
  out.println(aFriend);
 }
 ```
+11. ArrayList vs. Array:    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L5P1.png)    
+ ArrayList's length is dynamic, while Array's length is fixed.    
+ ArrayList is ZERO based, same as Array and String. The `size()` of an ArrayList is its logical size (the num. of elements held inside the ArrayList), not the physical size (the num. declared).
+ * Pros of ArrayList: increase and reduce the length automatically. Easy to search (which is impossible in Arrays)
+ * Cons of ArrayList: You can't use [] to get access to the elements as you did in Arrays. You need to use method calls instead. And ArrayList is a bit less efficient than Array.
+12. A very good example about ArrayList: Hangman Game!
+```java
+// loadWords add the word into the ArrayList if the word has the length required
+public static List<String> loadWords(int len,
+ String[] ospd)
+{
+  List<String> words = new ArrayList<String>(1000);
+  for (String word : ospd) {
+    if (word.length()==len) {
+      words.add(word);
+    }
+  }
+  return words;
+}
+
+// mustHaveAt removes all the words in the ArrayList without the certain char on the given position
+public static void mustHaveAt(char ch, int position,
+  List<String> aList)
+{
+  for (int i=aList.size()-1; i>=0; i--) { // NOTE THAT i counts down backwards! That's because if a element is removed, the rest of the ArrayList will move frontwards to fill the vacant space. So if we count up, we may miss the element that fills the vacant space we just removed an element from.
+    String word = aList.get(i);
+    if (position >= word.length() ||
+      word.charAt(position)!=ch)
+    {
+      aList.remove(i);
+    }
+  }
+}
+
+// mustNotHave remove all the words in the ArrayList with the certain char on the given position
+// Note that we use iteration here. So there's no need to count from the back like we just did.
+public static void mustNotHave(char ch,
+ List<String> aList)
+{
+  Iterator<String> itr = aList.iterator();
+  while (itr.hasNext()) {
+    String word = itr.next();
+    if (word.indexOf(ch)>=0) { // a smart way to process
+      itr.remove();
+    }
+  }
+}
+```
+13. HashMap (= association list in Racket):    
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L6.png)    
+ * Pros: fast insert, fast lookup, fast removal.
+ * Cons: unorder, iteration over HashMap will takes more time
+ Methods:
+ * put(key, value): specify both key and value
+ * get(key): specify a key and the value is returned (or null if there's no such value)
+ * remove(key): specify the key
+ A view is a *dynamic* access into HashMap. If you change the view, the HashMap changes and vice versa    
+ 
+ Requirements for HashMaps:
+ * keys and values must be class type
+ * and the class type you use must have the method `equal` and `hashCode` defined.
+14. An example:
+```java
+// Given ArrayList<String> words, an array list
+// of words to be counted
+Map<String, Integer> counts =
+ new HashMap<String, Integer>();
+for (String word : words){
+  word = word.toLowerCase();
+  if(!counts.containsKey(word)) {
+    counts.put(word, 1);
+  } else {
+    counts.put(word, counts.get(word)+1);
+  }
+}
+```
