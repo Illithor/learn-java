@@ -112,3 +112,64 @@ public static double median(int[] numbers) {
  }
 }
 ```
+7. For-each loop:    
+![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L3.png)    
+ Limitations of for-each loop:
+ * only good when you want to read the data in the array. Can not be used if you want to change the data in the array. That is because if you assign a new value to for-each variable, you are only changing the for-each variable, and you are not changing the corresponding element in the array.
+ * you do not know which element of the array you are processing on any giving iteration. Cannot return the index of an array element that you are currently processing.
+ * always process the array in a forward direction and always in single steps. Cannot process an array in reverse order, or in steps other than one.
+ * only iterates over a single array, and thus it is not the best choice when you have a loop that needs to process two or more arrays at the same time.
+8. Collection: an object that stores data. 
+ Benefits:
+ * provide many standard data structures
+ * size can grow or shrink (not static)
+ * the framework has it's foundation on a set of interfaces that share common methods
+ 
+ Syntax: `Collection<Type> name = new Collection<Type>();`    
+ "Collection" can be replaced by ArrayLists, LinkedLists, HashMaps, and TreeSets in Java.
+ 
+ In detail:
+ * The set interface, which extends the collection interface provides for unordered collection of elements, which is not allowed duplicates.
+ * The list interface provides for an ordered sequence of elements. Because it is ordered, the user can access elements by their integer index. 
+ * The map interface provides an object and maps keys to values. This interface is not associated with a collection interface, as it deals with pairs of elements rather than a single element type. A map cannot contain duplicate keys thus each key can map to at most one value.
+9. Iteration:
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L4P1.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L4P2.png)    
+10. Three ways to write the same piece of code:
+```java
+// for loop
+// cons: each "get" operation must walk the link list all the way from the first element
+List<String> myFriends = new ArrayList<String>();
+myFriends.add("Pete");
+myFriends.add("Lisa");
+myFriends.add("Gus");
+for (int i=0; i<myFriends.size(); i++) {
+ out.println(myFriends.get(i));
+}
+```
+```java
+// for-each loop
+// pros: clean and concise, and it is recommended to be used when possible
+// cons: for-each loops are read only, and they do not allow you to modify the collection while you are iterating over it
+List<String> myFriends = new ArrayList<String>();
+myFriends.add("Pete");
+myFriends.add("Lisa");
+myFriends.add("Gus");
+for (String aFriend : myFriends) {
+ out.println(aFriend);
+}
+```
+```java
+// iterators
+// cons: a bit more verbose than using a simple for each loop
+// pros: they take care of all the low level details for us and allow us to traverse over a collection regardless of what type of collection it is. They work the same for arrays, linked list, binary trees and hash tables.
+List<String> myFriends = new ArrayList<String>();
+myFriends.add("Pete");
+myFriends.add("Lisa");
+myFriends.add("Gus");
+Iterator<String> itr = myFriends.iterator();
+while (itr.hasNext()) {
+ String aFriend = itr.next();
+ out.println(aFriend);
+}
+```
