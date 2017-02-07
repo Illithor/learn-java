@@ -73,12 +73,12 @@
  ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M3L6P1.png)
 
 ## Week 2
-## Module 4 - Control flows
+## Module 4 - Control flow
 Intro to if/for/while loop.
 Just check the syntaxs online...
 ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M4L2.png)
 
-## Module 5 - Arrays
+## Module 5 - Structured data
 1. Arrays can store a large amount of variables as long as they are of the same type.
 2. **ZERO base**.
 3. Syntax: `type[] array_name = new type[length];`    
@@ -174,7 +174,7 @@ while (itr.hasNext()) {
 }
 ```
 11. ArrayList vs. Array:    
- ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L5P1.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L5.png)    
  ArrayList's length is dynamic, while Array's length is fixed.    
  ArrayList is ZERO based, same as Array and String. The `size()` of an ArrayList is its logical size (the num. of elements held inside the ArrayList), not the physical size (the num. declared).
  * Pros of ArrayList: increase and reduce the length automatically. Easy to search (which is impossible in Arrays)
@@ -250,3 +250,9 @@ for (String word : words){
   }
 }
 ```
+
+## Week 3
+## Module 6 - Classes and interfaces
+1. Difference between integer and string in memory:    
+  In the memory location referenced by the variable num, we will actually find the representation of the number 23 in binary.    
+  In the memory location referenced by the variable string 1, we find a **reference** to yet another location and memory where the string abcd is actually stored.
