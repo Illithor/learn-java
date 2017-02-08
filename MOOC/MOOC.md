@@ -256,3 +256,9 @@ for (String word : words){
 1. Difference between integer and string in memory:    
   In the memory location referenced by the variable num, we will actually find the representation of the number 23 in binary.    
   In the memory location referenced by the variable string 1, we find a **reference** to yet another location and memory where the string abcd is actually stored.
+2. Class = instance variables + methods.    
+ Variables are the state of the class, and methods are the behavior of the class.
+3. **The class is the blueprint, while the object is the instance of the class.**
+4. In the Account example, the Account.java is the **class file**, which is the blueprint or the template, while Logic.java is the **client file** that uses the class.
+5. Leaving variables in the class as public is a bad practice, since everyone can get access to them. So we should mark them as private. That's the protection of the data. Another good practice is that all methods that have no access to instance variables and do not mutate the data **should be private.**
+6. **Users do not have access to the account variables - but they can access them through methods.**
