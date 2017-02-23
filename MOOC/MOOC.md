@@ -87,7 +87,7 @@ Just check the syntaxs online...
  ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L2P1.png)
 5. It's easy to process the array with a for-loop.
 6. Some examples:
-```java
+ ```java
 //Returns a new array that has been mirrored.
 //Example: [3, 8, 10, 4]=>[3, 8, 10, 4, 4, 10, 8, 3]
 public static int[] mirror(int[] orig) {
@@ -100,7 +100,7 @@ public static int[] mirror(int[] orig) {
 }
 ```
 
-```java
+ ```java
 public static double median(int[] numbers) {
  int[] tmp = Arrays.copyOf(numbers, numbers.length); // That is, copy the array named "numbers" and all the values of it.
  Arrays.sort(tmp);
@@ -113,7 +113,7 @@ public static double median(int[] numbers) {
 }
 ```
 7. For-each loop:    
-![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L3.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L3.png)    
  Limitations of for-each loop:
  * only good when you want to read the data in the array. Can not be used if you want to change the data in the array. That is because if you assign a new value to for-each variable, you are only changing the for-each variable, and you are not changing the corresponding element in the array.
  * you do not know which element of the array you are processing on any giving iteration. Cannot return the index of an array element that you are currently processing.
@@ -223,7 +223,7 @@ public static void mustNotHave(char ch,
 }
 ```
 13. HashMap (= association list in Racket):    
-![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L6.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M5L6.png)    
  * Pros: fast insert, fast lookup, fast removal.
  * Cons: unorder, iteration over HashMap will takes more time
  Methods:
@@ -262,3 +262,69 @@ for (String word : words){
 4. In the Account example, the Account.java is the **class file**, which is the blueprint or the template, while Logic.java is the **client file** that uses the class.
 5. Leaving variables in the class as public is a bad practice, since everyone can get access to them. So we should mark them as private. That's the protection of the data. Another good practice is that all methods that have no access to instance variables and do not mutate the data **should be private.**
 6. **Users do not have access to the account variables - but they can access them through methods.**
+
+Refining your class file:
+
+1. Two types of method often present in a class file: accessors and mutators.    
+ Accessors usually access or get the value, while mutators change of modify the value.
+2. Every class has a default constructor. We can also write our own constructors.    
+ They can be `overloaded`, which means to have the same name but uses different variables. Do not include a return type when writing a constructor. Once the new constructor is written, the old default constructor can neven be used again.
+3. To refer to a constructor in our own class:
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M6L4.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M6L5.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M6L6.png)    
+ The call to another constructor must come first.
+ 
+ ```java
+// wrong: 
+public Vehicle(double odometer, int year){
+  odometer = odometer;
+  year = year;
+}
+// correct: 
+// this.odometer = odometer;
+// this.year = year;
+ ```
+4. When calling method within the same class, use the keyword `this`.    
+ When calling method outside the class, do not use `this`.
+5. To `override` a method, the name, the output, and the input parameter must all be the same.
+6. What inside the object array are not objects, but the references of objects.
+7. Passing objects as parameters:    
+ When passing an int as a parameter, after the process, the value of a **copy** of the int changes, but the int itself remains the same.    
+ However, when passing an object as a parameter, if the object is modified inside the method, **the object itself changes**(it's not changing the copy, but changes the object)!
+8. `Static` means something stored in the class can be used inside the objects under that class.
+
+
+Class Hierarchy and Interfaces
+ 1. To `override`, a method must have the same name, parameter list and return type as the original method.
+ (While to `overload`, the new method will keep the same name, but not the same parameter list or return type. So when a method is called, the compiler will know from the unique parameter list or return type that which method under the same name you are calling.)
+ 2. Syntax:
+ ```java
+ public class Derived_Class_Name extends super_Class_Name
+{
+// Declarations of additional fields
+// Definitions of additional methods and overridden methods
+}
+```
+ 3. Keywords:
+ public = can be called by everyone
+ private = can only be called inside the class (even not accessible to its subclasses)
+ protected  = can be called inside the class and its subclasses, but still cannot be directly used by clients(However, clients can access them through methods)
+
+## Module 7 - Polymorphism
+Polymorphism
+ 1. Polymorphism - A subclass can stand in wherever a superclass is called. (e.g. A Gouhl is an ABSpike, so a Gouhl can be used wherever an ABSpike is expected, since it has all the states and methods that a ABSpike is supposed to have)
+ 2. When a method is called, the compiler first check up the subclass. If the method is not in the subclass, then the compiler goes to the class above, then above...
+ 3. When you want to call a overriden method inside the subclass, use the keyword `super`. However, the client file cannot use the keyword super. (It cannot get access to the parent class in the class file)
+
+Java Interfaces
+ 1. Interfaces = different instance variables but same methods.
+
+Advanced Class Interface features
+ 1. You cannot create a instance of the abstract class, but you can create a more detailed one.
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/M7L6.png)    
+ For example in this picture, you can't instantiate AbstractMap, but you can instantiate HashMap, which extends AbstractMap.    
+ So those abstract classes such as AbstractMap must be overriden.
+ 2. Two kinds of nested classes in Java:
+  * An inner nested class can reference non-static instance methods and fields.
+  * A static nested class cannot reference non-static instance methods and fields.
