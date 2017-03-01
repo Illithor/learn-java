@@ -9,7 +9,7 @@
    No matter how big your program is, there's got to be a main() method to get the ball rolling.   
    i.e. it's not true that every class should have a main method - **but at least one main method in the whole file**.
 4. Assignment operator "=" and equal operator "==" are different. Make sure you pick the right one.    
-5. The only varIable you can directly test (without using a comparison operator) is a boolean. 
+5. The only variable you can directly test (without using a comparison operator) is a boolean. 
   ```java
   // this piece of code is not correct
   int x = 1;
@@ -51,7 +51,7 @@
 
 ## Chapter 4 – methods use instance variables
 1. A class is the blueprint for an object. It defines what the object(s) know(s) and do(es).
-2. `dog.bark(3); =  dog.bark(); dog.bark(); dog.bark();`
+2. `dog.bark(3); =  dog.bark(); dog.bark(); dog.bark();` <- Doubt it (Feb 28, 2017)
 3. A `void` return type does not give anything back.
 4. When the value of x is passed to z and we change z’s value, the value of x doesn’t change. What passed to z is only a **copy** of x’s value.
 5. You can return a *byte* where an *int* is expected. However, you can’t return a big stuff into what expects a small stuff.
@@ -60,7 +60,8 @@
 7. Java cares about type, both when taking a value and returning a value.
 8. You shouldn’t let your instance variables exposed. So you must build a setter to stop accessing the data directly. So you should encapsulate!
 9. Encapsulation rule of thumb: mark the instance variables *private* and provide *public* getters and setters.
- ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/04-09.png)
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/04-09.png)    
+ From MOOC: private instance variables can only be accessed through methods.
 10. `int x = 3 + one.getSize();` is available if one.getSize() returns an int.
 11. Instance variables always have a default value.    
     Int: 0    Float: 0.0    Booleans: false    References: null (not an object,is a reference)
@@ -79,11 +80,11 @@
    Test Code: a class or methods that will test the real code and validate that it's doing the right thing.    
    Real Code: the actual implementation of the class.
 2. Figure out what the class is supposed to do:
-   * List the Instance variables and methods.
-   * Write prep code for the methods.
-   * Implement the class.
-   * Test the methods.
-   * Debug and reimplement as needed.
+ * List the instance variables and methods.
+ * Write prep code for the methods.
+ * Implement the class.
+ * Test the methods.
+ * Debug and reimplement as needed.
 3. Use while loop when you don’t know how many times you ‘re going to loop.    
    Use for loop when you know exactly the time you’re going to loop.    
 4. Note the difference between `++x` and `x++`.
@@ -91,15 +92,15 @@
 ## Chapter 6 - get to know the Java API
 1. ArrayList is an **object**.
 2. 
-   * && <- this means “and”
-   * || <- this means “or”
-   * ! <- this means “not equal”
-   * & and | <- these are also “and” and “or”, but they force the JVM to check both sides even already short circuited.
+  * && <- this means “and”
+  * || <- this means “or”
+  * ! <- this means “not equal”
+  * & and | <- these are also “and” and “or”, but they force the JVM to check both sides even already short circuited.
 3. You have to know the full name of the class you want to use in your code.    
   Full name = package name + class name
 4. There are two ways to use a class:
-  * Import the full name at the top of the source code.
-  * Type the full name every time you use it.  (Which is really inconvenient!)
+ * Import the full name at the top of the source code.
+ * Type the full name every time you use it.  (Which is really inconvenient!)
     (Unless the class is in java.lang)
 5. ArrayList is a class in the Java API. ArrayList is really `java.util.ArrayList`.
 6. `import` the class of package at the top of the source code, or you have to type it.
@@ -144,6 +145,22 @@
    (Bathroom HAS-A Tub, so Bathroom has a *instance variable* Tub, or Bathroom has a *reference* to Tub)
 8. The keyword `super` allows you to use the method in superclass while overriding it at the same time.
 9. Most restrictive to least: private -> default -> protected -> public.
+ ```
+ By David Segonds from Stack Overflow
+              | Class | Package | Subclass | Subclass | World
+              |       |         |(same pkg)|(diff pkg)| 
+————————————+———————+—————————+——————————+——————————+————————
+public      |   +   |    +    |    +     |     +    |   +     
+————————————+———————+—————————+——————————+——————————+————————
+protected   |   +   |    +    |    +     |     +    |   o     
+————————————+———————+—————————+——————————+——————————+————————
+no modifier |   +   |    +    |    +     |     o    |   o
+————————————+———————+—————————+——————————+——————————+————————
+private     |   +   |    o    |    o     |     o    |   o
+
++ : accessible
+o : not accessible
+ ```
 10. Public members are inherited. Private members are not inherited.
 11. If you want it be more specific, put it into the subclass.    
     If many subclasses have a method in common, put it into the superclass.    
@@ -153,7 +170,8 @@
 13. When you define a supertype for a group of classes, any subclass of that supertype can be substituted where the supertype is expected.
 14. Normal: Dog myDog = new Dog(); (both have the type “Dog”)    
     Polymorphism: Animal myDog = new Dog();  (they are of different type)    
-    With polymorphism, the reference type can be a superclass of the actual object type.
+    With polymorphism, the reference type can be a superclass of the actual object type.    
+    (i.e. when a method calls an Animal, a Dog/Cat/etc can also be passed to it.)
 15. An example:
     ```java
     Animal[] animals = new Animal[5];
@@ -171,26 +189,26 @@
 16. You can also have polymorphic arguments and return types!
 17. Most subclass levels are no deeper than one or two levels.
 18. Three ways to stop a class from being subclassed:
-    * Make it non-public. (don’t declare it as `public`)
-    * Mark it as `final`. (no one can extend a final class)
-    * A class has only private constructors.
+ * Make it non-public. (don’t declare it as `public`)
+ * Mark it as `final`. (no one can extend a final class)
+ * A class has only private constructors.
 19. To protect a specific method from being overridden, mark the method with `final`.    
     To guarantee that none of the methods in that class will ever be overridden, mark the whole class as `final`.
 20. `TO OVERRIDE, YOU MUST FOLLOW THE CONTRACT!` (A contract is like “take a String and return a Boolean.”)    
-    The overriding method must have the exactly same contract.
+    The overriding method must have the exactly same contract (same name, same parameter list, same return type).
 21. Rules of overriding:    
-    * Arguments and return types must be the same.
-    * The method can’t be less accessible.
+ * Arguments and return types must be the same.
+ * The method can’t be less accessible.
     
-    For example:
-    In a superclass we have `public boolean turnOn();`.    
-    If you write `public boolean turnOn(int level);` in the subclass, you’re not overriding - you’re overLOADing, because you change the argument.    
-    If you write `private boolean turnOn();` in the subclass, you’re not overriding nor overloading, because you do not change the argument, but also restrict the access level.
+ For example:    
+ In a superclass we have `public boolean turnOn();`.    
+ If you write `public boolean turnOn(int level);` in the subclass, you’re not overriding - you’re overLOADing, because you change the argument.    
+ If you write `private boolean turnOn();` in the subclass, you’re not overriding nor overloading, because you do not change the argument, but also restrict the access level.
 22. Method overloading is nothing more than having two methods with the same name but different argument lists. It has nothing to do with inheritance and polymorphism.
 23. Rules for overloading:
-    * The return types can be different.
-    * You cannot change ONLY the return type.
-    * You can vary the access levels in any direction.
+ * The return types can be different.
+ * You cannot change ONLY the return type.
+ * You can vary the access levels in any direction.
 
 ## Chapter 8 - interfaces and abstract classes
 1. Abstract class = class that can’t be instantiated.
@@ -201,9 +219,10 @@
  `Canine c; c = new Dog();` is fine.    
  But `c = new Canine();` is forbidden.
 4. An abstract class has virtually no use, no value, no purpose, unless it is extended.
-5. Abstract class != concrete class.
+5. The antonym for abstract class is concrete class.
 6. Besides classes, you can also mark methods abstract, too.
-7. An abstract class means the class must be extended. An abstract method means the method must be overridden.
+7. An abstract class means the class must be extended.    
+ An abstract method means the method must be overridden.
 8. An abstract method has no body! (No curly braces)
 9. If you declare an abstract method, you MUST mark the class abstract as well. You can’t have an abstract method in a non-abstract class. But you can mix both abstract and non-abstract methods in an abstract class.
 10. The point of an abstract method is that even though you haven’t put in any actual method code, you’ve still defined part of the protocol for a group of subtypes (subclasses).
@@ -218,14 +237,14 @@
 17. `Object o = new Ferrari();`    
     `o.goFast(); // that is illegal!`    
    You can only call a method on an object reference if the class of the reference type really has the method.
-18. Put any kind of object into ArrayList<Object>, then no matter what the object is (fish, guitar, soccerball etc.), it comes out as an Object type.    
- ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-18.png)
+18. Put any kind of object into ArrayList\<Object\>, then no matter what the object is (fish, guitar, soccerball etc.), it comes out as an Object type.    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/08-18.png)
 19. The Bad and the Good:    
- ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19.png)    
- ![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-19g.png)
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/08-19.png)    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/08-19g.png)
 20. The compiler decides whether you can call a method based on the reference type, not actual object type.
 21. Even if the *object* is of type Snowboard, an Object *reference* to the Snowboard object can’t see the Snowboard-specific methods.    
-![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-21.png)
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/08-21.png)
 22. If you are sure an object is a Dog, you can force it to become a Dog again:
  ```
  Object o =al.get(index);
@@ -235,8 +254,8 @@
 
 23. The compiler checks the class of the *reference* type, not the class of the actual *object* type.
 24. Interface methods are public and abstract.
-Again, abstract methods have no body! They end up with a semicolon.    
-![](https://github.com/Krabapple/learn-java/blob/master/screenshot/08-24.png)
+ Again, abstract methods have no body! They end up with a semicolon.    
+ ![](https://github.com/Illithor/learn-java/blob/master/screenshot/08-24.png)
 25. One class can only have one extend, but many implements.    
  i.e. A Java class can only have one superclass, but can have many interfaces that defines the roles the class can play.
 26. How to know whether to make a class, a subclass, an abstract class, or an interface?
