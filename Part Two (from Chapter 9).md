@@ -70,6 +70,8 @@ eligible for GC when its last live reference disappears.
 ## Chapter 10 - numbers and statics
 1. ` max()` `min()` `round()` `abs()`, these methods never use instance variable values.
 2. You can NEVER say new to a Math class to create a new Math object.
+2. Call a static method using a class name.    
+ Call a non-static method using a reference variable name.
 3. The keyword **static** lets a method run without any instance of the class.
 4. Often (although not always), a class with static methods is not meant to be instantiated.
 ![](https://github.com/Illithor/learn-java/blob/master/screenshot/10-04.png)
